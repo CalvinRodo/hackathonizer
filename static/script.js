@@ -1,27 +1,60 @@
 (function () {
-  const items = [
-    '🍭',
-    '❌',
-    '⛄️',
-    '🦄',
-    '🍌',
-    '💩',
-    '👻',
-    '😻',
-    '💵',
-    '🤡',    
-    '🦖',
-    '🍎',
-    '😂',
-    '🖕',
+
+  const thing_to_build = [ 
+    "Create an api",
+    "Build a web app",
+    "Create a service",
+    "Write a library",
+    "Create a cli tool",
+    "Do something using AI",
+    "Create an api",
+    "Build a web app",
+    "Create a service",
+    "Write a library",
+    "Create a cli tool",
+    "Do something using AI",
   ];
-  const doors = document.querySelectorAll('.door');
-  
+
+  const theme_to_build = [
+    "Movies",
+    "Books",
+    "Paul Craig",
+    "Music",
+    "Food",
+    "Games",
+    "Hackathons",
+    "Goats",
+    "Holidays",
+    "The weather",
+    "Beavers",
+    "The moon",
+    "The 80s",
+    "The 90s",
+    "Analog",
+    "Boardgames",
+    "Art",
+    "A cartoon from your childhood",
+    "SPAAACE, https://youtu.be/niZpcdp2v34?t=13",
+  ];
+
+  const cds_thing_to_use = [ 
+    "Forms",
+    "Notify",
+    "Notify",
+    "Forms",
+    "Notify",
+    "The design system"
+  ];
+
+  const thing = document.querySelector('#thing');
+  const theme = document.querySelector('#theme');
+  const cds = document.querySelector('#cds');
+  const doors = [thing, theme, cds];
+
   document.querySelector('#spinner').addEventListener('click', spin);
   document.querySelector('#reseter').addEventListener('click', init);
 
-  function init(firstInit = true, groups = 1, duration = 1) {
-    for (const door of doors) {
+  function initOne(firstInit, groups, duration, door, listOfThings) { 
       if (firstInit) {
         door.dataset.spinned = '0';
       } else if (door.dataset.spinned === '1') {
@@ -35,7 +68,7 @@
       if (!firstInit) {
         const arr = [];
         for (let n = 0; n < (groups > 0 ? groups : 1); n++) {
-          arr.push(...items);
+          arr.push(...listOfThings);
         }
         pool.push(...shuffle(arr));
 
@@ -73,11 +106,17 @@
       boxesClone.style.transitionDuration = `${duration > 0 ? duration : 1}s`;
       boxesClone.style.transform = `translateY(-${door.clientHeight * (pool.length - 1)}px)`;
       door.replaceChild(boxesClone, boxes);
-    }
+  }
+
+
+  function init(firstInit = true, duration = 1) {
+    initOne(firstInit, 1, duration, thing, thing_to_build);
+    initOne(firstInit, 1, duration, theme, theme_to_build);
+    initOne(firstInit, 4, duration, cds, cds_thing_to_use);
   }
 
   async function spin() {
-    init(false, 1, 2);
+    init(false, 2);
     
     for (const door of doors) {
       const boxes = door.querySelector('.boxes');

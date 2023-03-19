@@ -12,42 +12,46 @@
   <link rel="stylesheet" href="https://unpkg.com/@cdssnc/gcds-components/dist/gcds/gcds.css">
   <script type="module" src="https://unpkg.com/@cdssnc/gcds-components/dist/gcds/gcds.esm.js"></script>
   <script nomodule src="https://unpkg.com/@cdssnc/gcds-components/dist/gcds/gcds.js"></script>
-    <link rel="stylesheet" href="static/styles.css">
+  <!-- GC Design System Utility -->
+  <link rel="stylesheet" href="static/utilities.min.css">
+  <link rel="stylesheet" href="static/styles.css">
 </head>
-<body>
-
-
-
+<body style="padding-bottom: 3em">
+<gcds-header>
+</gcds-header>
+<div class="content-wrapper"></div>
+<main id="mc" class="container-xl mx-auto xl:px-0 sm:px-500 px-300 general-layout">
+  <h1>Title of page</h1>
   <div id="app">
-    <div class="doors">
-      <div class="door">
+    <div class="doors mb-400">
+      <p>Thing:</p>
+      <div class="door" id="thing">
         <div class="boxes">
-          <!-- <div class="box">?</div> -->
         </div>
       </div>
   
-      <div class="door">
+      <p class="mb-400">Theme:</p>
+      <div class="door" id="theme">
         <div class="boxes">
-          <!-- <div class="box">?</div> -->
         </div>
       </div>
   
-      <div class="door">
+      <p>Service to use:</p>
+      <div class="door" id="cds">
         <div class="boxes">
-          <!-- <div class="box">?</div> -->
         </div>
       </div>
     </div>
   
     <div class="buttons">
-      <button id="spinner">Play</button>
-      <button id="reseter">Reset</button>
+      <gcds-button id="spinner">Play</gcds-button>
+      <gcds-button id="reseter" button-role="danger">Reset</gcds-button>
     </div>
-  </div>
-  view rawslot-machine-dom.html hosted with ❤ by GitHub
-  
-  
-  
+  </div> 
+  </main>
+</div>
+  <gcds-footer></gcds-footer>
+  `
   <script src="static/script.js"></script>
 </container>
 </body>
