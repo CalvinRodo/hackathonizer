@@ -1,7 +1,8 @@
 import random
 from flask import Flask, render_template
 
-app = Flask(__name__)
+app = Flask(__name__,
+static_url_path='/static')
 
 thing_to_build = [ 
   "Create an api",
@@ -42,6 +43,7 @@ Must use: {random.choice(cds_thing_to_use)}
 """
 
 
-@app.route("/hello")
-def hello():
-    return render_template('hello.html', name = "Calvin")
+@app.route("/", methods=['GET'])
+def index():
+    print("Rendering index")
+    return render_template('index.html')
